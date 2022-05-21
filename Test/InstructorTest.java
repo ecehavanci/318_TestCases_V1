@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InstructorTest {
+    Instructor instructor = new Instructor("Kaan","Kurtel",1010,"1010");
 
     @BeforeEach
     void setUp() {
@@ -15,9 +16,15 @@ class InstructorTest {
     }
 
     @Test
-    void addAndReturnLesson() {
+    void positiveAddAndReturnLesson() {
+        Lesson lesson = instructor.addAndReturnLesson("SE318",instructor);
+        assertEquals(instructor.lessonList.get(0),lesson);
     }
-
+    @Test
+    void negativeAddAndReturnLesson() {
+        Lesson lesson = instructor.addAndReturnLesson("SE318",instructor);
+        assertNotEquals(new Lesson("SE318",instructor),lesson);
+    }
     @Test
     void showLessonDetails() {
     }

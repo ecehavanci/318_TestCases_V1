@@ -1,8 +1,24 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExamTest {
+    Exam exam = new Exam();
+
+
+    @BeforeEach
+    void setUp() {
+        exam.SetDate(new int[]{11,1,2022});
+        exam.EditType("Midterm");
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
 
     @Test
     void addQuestion() {
@@ -17,7 +33,16 @@ class ExamTest {
     }
 
     @Test
-    void getType() {
+    void positiveGetType() {
+        String type = exam.GetType();
+        assertEquals("Midterm",type);
+
+    }
+    @Test
+    void negativeGetType() {
+        String type = exam.GetType();
+        assertNotEquals("Quiz",type);
+
     }
 
     @Test
@@ -25,7 +50,17 @@ class ExamTest {
     }
 
     @Test
-    void getLongDate() {
+    void positiveGetLongDate() {
+        String date = exam.GetLongDate();
+        assertEquals("11 Ocak 2022",date);
+
+    }
+
+    @Test
+    void negativeGetLongDate() {
+        String date = exam.GetLongDate();
+        assertNotEquals("11 Ocak 2023",date);
+
     }
 
     @Test

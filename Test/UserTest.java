@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
+    Student student = new Student("Atalay", "Tanyeli", 1111, "1111");
+    String password;
 
     @BeforeEach
     void setUp() {
+        password = "2222";
     }
 
     @AfterEach
@@ -15,7 +18,17 @@ class UserTest {
     }
 
     @Test
-    void setPassword() {
+    void positiveSetPassword() {
+
+        student.setPassword(password);
+        assertEquals(password, student.getPassword());
+    }
+
+    @Test
+    void negativeSetPassword() {
+
+        student.setPassword(password);
+        assertNotEquals("1111", student.getPassword());
     }
 
     @Test
